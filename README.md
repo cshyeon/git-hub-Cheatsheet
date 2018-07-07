@@ -43,6 +43,30 @@ git reflog
 git reset [--hard | --soft] [HEAD]
 ```
 
+중간 commit 삭제 / commit 합치기
+```bash
+# 목적 : 불필요한 commit 메세지 / 수정 로그 삭제
+# N은 하나로 합칠 커밋의 헤드 갯수
+git rebase HEAD~[N] -i
+
+# 최신순(맨 아래 로그)부터 하나로 합칠 커밋까지 squash로 변경
+# HEAD 커밋을 이전 커밋 3개(HEAD 포함 4개)와 합칠경우 최신순 HEAD부터 3개의 커밋 로그에 대해 squash로 설정, 4번째 커밋은 합치기위해 그대로 pick 상태 유지, 저장 및 종료 (in vim - :wq)
+
+# git rebase HEAD~4 -i
+# ==================================
+# pick version1
+# squash version2
+# squash version3
+# squash current HEAD(version 4)
+# ==================================
+
+# 새롭게 뜨는 에디터창에 새로운 커밋 메세지 작성 후 저장 및 종료
+
+# 결과로 current Head ,version 3, version2가 하나의 커밋으로 합쳐지면서 version 2, version 3에 추가되었던 내용이 current Head에서는 삭제된 경우 합친 커밋에 수정된 기록이 남지않음
+
+```
+
+
 commit 메세지 수정
 ```bash
 # N은 확인할 이전 헤드 갯수
@@ -52,7 +76,7 @@ git rebase HEAD~[N] -i
 ```
 
 ### `clone`
-사용자 디렉토리 이름 설정
+사용자 디렉토리 이름을 지정할경우
 ```bash
 git clone [url] [directory name]
 #git clone https://github.com/cshyeon/git-hub-Cheatsheet.git myfolder
