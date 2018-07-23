@@ -86,3 +86,5 @@ git rebase HEAD~[N] -i
 git clone [url] [directory name]
 #git clone https://github.com/cshyeon/git-hub-Cheatsheet.git myfolder
 ```
+
+new modify on dev branch
