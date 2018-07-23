@@ -88,3 +88,4 @@ git clone [url] [directory name]
 ```
 
 dev modify
+master new write
