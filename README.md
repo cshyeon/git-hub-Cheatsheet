@@ -22,6 +22,11 @@ git reset [--hard | --soft] [HEAD]
 git push origin master -f
 ```
 
+#### Remote branch 삭제
+```bash
+git push origin --delete [REMOTE_BRANCH_NAME]
+```
+
 
 # git
 
